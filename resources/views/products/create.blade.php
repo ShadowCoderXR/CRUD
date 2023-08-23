@@ -1,3 +1,3 @@
 <x-layouts.master-layout title="Crear producto">
-    <x-input parameter="" route="products.store" title="Crear producto"/>
+    <x-input method="POST" route="{{route('products.store')}}" title="Crear producto" button="Crear"/>
 </x-layouts.master-layout>

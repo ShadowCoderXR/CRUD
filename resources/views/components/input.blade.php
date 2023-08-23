@@ -1,22 +1,21 @@
 @props([
     'item' => [],
-    'parameter' => '',
+    'method' => '',
     'route' => '',
-    'title' => '',       
+    'title' => '',
+    'button' => '',       
     ])
 
 <div class="card-header">{{$title}}</div>
 
 <div class="card-body">
-    <form method="POST" action="{{ $parameter== 'id' ? route($route, ['product' => $item['id']]) : route($route)}}">
-        @if ($parameter == 'id')
-            @method('PUT')
-        @endif
+    <form method="POST" action="{{$route}}">
+        @method('{{action}}')
         @csrf
 
         <div class="form-group">
             <label for="name">'Nombre</label>
-            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" @if($parameter== 'id') value="{{ old('name', $item['name'])}}" @endif autocomplete="name" autofocus>
+            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item['name'] ?? ' ')}}" autocomplete="name" autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -26,7 +25,7 @@
 
         <div class="form-group">
             <label for="price">'Precio</label>
-            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" @if($parameter== 'id') value="{{ old('price', $item['price']) }}" @endif>
+            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item['price'] ?? ' ')}}">
             @error('price')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -36,7 +35,7 @@
 
         <div class="form-group">
             <label for="quantity">'Cantidad</label>
-            <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" @if($parameter== 'id') value="{{ old('quantity', $item['quantity']) }}" @endif>
+            <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity', $item['quantity'] ?? ' ')}}">
             @error('quantity')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -46,7 +45,7 @@
 
         <div class="form-group">
             <label for="description">'Descripción'</label>
-            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" rows="4">@if($parameter== 'id') {{ old('description', $item['description']) }} @endif</textarea>
+            <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" rows="4">{{ old('description', $item['description'] ?? ' ')}}</textarea>
             @error('description')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -54,6 +53,6 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">{{$title}}</button>
+        <button type="submit" class="btn btn-primary">{{$button}}</button>
     </form>
 </div>

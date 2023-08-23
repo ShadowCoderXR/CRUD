@@ -4,13 +4,12 @@
     <table class="table align-items-center mb-0">
         <thead>
             <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">name</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">price</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">quantity</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">description</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Precio</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cantidad</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Descripción</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Acciones</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -33,21 +32,21 @@
                     <p class="text-xs font-weight-bold mb-0">{{ $product->description }}</p>
                 </td>
                 <td class="align-middle">
-                    <a href="{{route('products.show', $product->id)}}" class="text-secondary font-weight-bold text-xs">
-                        ver
+                    <a href="{{ route('products.show', $product->id) }}" class="text-secondary font-weight-bold text-xs">
+                        Ver
                     </a>
-                </td>
-                <td class="align-middle">
-                    <a href="{{route('products.edit', $product->id)}}" class="text-secondary font-weight-bold text-xs">
-                        Edit
+                    &nbsp; <!-- Espacio en blanco -->
+                    <a href="{{ route('products.edit', $product->id) }}" class="text-secondary font-weight-bold text-xs">
+                        Editar
                     </a>
+                    &nbsp; <!-- Espacio en blanco -->
                 </td>
-                <td class="align-middle">
-                    <form action="{{route('products.destroy', $product->id)}}" method="POST">
+                <td>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-link text-secondary font-weight-bold text-xs">
-                            Delete
+                        <button type="submit" class="btn btn-outline-primary font-weight-bold text-xs">
+                            Eliminar
                         </button>
                     </form>
                 </td>
@@ -56,4 +55,5 @@
         </tbody>
     </table>
 </div>
+
 </x-layouts.master-layout>
