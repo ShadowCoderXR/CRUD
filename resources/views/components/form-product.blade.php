@@ -10,7 +10,7 @@
 
 <div class="card-body">
     <form method="POST" action="{{$route}}">
-        @method('{{action}}')
+        @method($method)
         @csrf
 
         <div class="form-group">
@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label for="price">Precio</label>
-            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item['price'] ?? ' ')}}">
+            <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="${{ old('price', $item['price'] ?? ' ')}}">
             @error('price')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
