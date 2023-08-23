@@ -14,7 +14,7 @@
         @csrf
 
         <div class="form-group">
-            <label for="name">'Nombre</label>
+            <label for="name">Nombre</label>
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $item['name'] ?? ' ')}}" autocomplete="name" autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            <label for="price">'Precio</label>
+            <label for="price">Precio</label>
             <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $item['price'] ?? ' ')}}">
             @error('price')
                 <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            <label for="quantity">'Cantidad</label>
+            <label for="quantity">Cantidad</label>
             <input id="quantity" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity', $item['quantity'] ?? ' ')}}">
             @error('quantity')
                 <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-            <label for="description">'Descripción'</label>
+            <label for="description">Descripción'</label>
             <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" rows="4">{{ old('description', $item['description'] ?? ' ')}}</textarea>
             @error('description')
                 <span class="invalid-feedback" role="alert">
